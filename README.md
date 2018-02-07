@@ -17,3 +17,21 @@ CacheDisable "/${VIRTUAL_SITE_ALIAS}"
 ProxyPass /${VIRTUAL_SITE_ALIAS} ${VIRTUAL_SITE_SOURCE}
 ProxyPassReverse /${VIRTUAL_SITE_ALIAS} ${VIRTUAL_SITE_SOURCE}
 ```
+
+How to run?
+
+```
+docker run -dti \
+-e SERVER_ADMIN=roselroa@example.com \
+-e SERVER_NAME=k0l0s0s \
+-e VIRTUAL_SITE_ALIAS=exampledomain \
+-e VIRTUAL_SITE_SOURCE=https://www.example.com/index.html \
+-p 8080:80 \
+roselroa/proxy-apache
+```
+
+How to test?
+
+```
+http://localhost:8080/exampledomain/index.php?param=string1
+```
